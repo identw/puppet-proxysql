@@ -32,6 +32,14 @@ class proxysql::admin_credentials {
       group   => $proxysql::sys_group,
       mode    => '0400',
     }
+
+    file { "${facts[root_home]}/.proxysql_path_mycnf":
+      ensure  => file,
+      content => $proxysql::mycnf_file_name,
+      owner   => $proxysql::sys_owner,
+      group   => $proxysql::sys_group,
+      mode    => '0400',
+    }
   }
 
 }
